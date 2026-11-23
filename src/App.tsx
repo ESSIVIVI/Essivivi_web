@@ -9,6 +9,7 @@ import VerifyEmailPage from "@/auth/VerifyEmailPage";
 import AppLayout from "@/layout/AppLayout";
 import ComingSoonPage from "@/pages/ComingSoonPage";
 import ForbiddenPage from "@/pages/ForbiddenPage";
+import DrinksPage from "@/pages/drinks/DrinksPage";
 import HomePage from "@/pages/HomePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
@@ -35,7 +36,7 @@ export default function App() {
             <Route element={<RequireAuth />}>
               <Route element={<AppLayout />}>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/boissons" element={<ComingSoonPage title="Boissons" />} />
+                <Route path="/boissons" element={<DrinksPage />} />
                 <Route element={<RequireAuth roles={["admin", "gestionnaire"]} />}>
                   <Route path="/stock" element={<ComingSoonPage title="Stock" />} />
                 </Route>

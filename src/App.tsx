@@ -6,6 +6,9 @@ import LoginPage from "@/auth/LoginPage";
 import RegisterPage from "@/auth/RegisterPage";
 import { RequireAuth } from "@/auth/RequireAuth";
 import VerifyEmailPage from "@/auth/VerifyEmailPage";
+import AppLayout from "@/layout/AppLayout";
+import ComingSoonPage from "@/pages/ComingSoonPage";
+import ForbiddenPage from "@/pages/ForbiddenPage";
 import HomePage from "@/pages/HomePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
@@ -30,7 +33,18 @@ export default function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
             <Route element={<RequireAuth />}>
-              <Route path="/" element={<HomePage />} />
+              <Route element={<AppLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/boissons" element={<ComingSoonPage title="Boissons" />} />
+                <Route element={<RequireAuth roles={["admin", "gestionnaire"]} />}>
+                  <Route path="/stock" element={<ComingSoonPage title="Stock" />} />
+                </Route>
+                <Route element={<RequireAuth roles={["admin"]} />}>
+                  <Route path="/invitations" element={<ComingSoonPage title="Invitations" />} />
+                </Route>
+                <Route path="/profil" element={<ComingSoonPage title="Mon profil" />} />
+                <Route path="/forbidden" element={<ForbiddenPage />} />
+              </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

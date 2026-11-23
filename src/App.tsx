@@ -11,6 +11,7 @@ import ComingSoonPage from "@/pages/ComingSoonPage";
 import ForbiddenPage from "@/pages/ForbiddenPage";
 import DrinksPage from "@/pages/drinks/DrinksPage";
 import HomePage from "@/pages/HomePage";
+import ProfilePage from "@/pages/profile/ProfilePage";
 import StockPage from "@/pages/stock/StockPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
@@ -44,7 +45,7 @@ export default function App() {
                 <Route element={<RequireAuth roles={["admin"]} />}>
                   <Route path="/invitations" element={<ComingSoonPage title="Invitations" />} />
                 </Route>
-                <Route path="/profil" element={<ComingSoonPage title="Mon profil" />} />
+                <Route path="/profil" element={<ProfilePage />} />
                 <Route path="/forbidden" element={<ForbiddenPage />} />
               </Route>
             </Route>

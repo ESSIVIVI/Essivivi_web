@@ -11,6 +11,7 @@ import ComingSoonPage from "@/pages/ComingSoonPage";
 import ForbiddenPage from "@/pages/ForbiddenPage";
 import DrinksPage from "@/pages/drinks/DrinksPage";
 import HomePage from "@/pages/HomePage";
+import StockPage from "@/pages/stock/StockPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 const queryClient = new QueryClient({
@@ -38,7 +39,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/boissons" element={<DrinksPage />} />
                 <Route element={<RequireAuth roles={["admin", "gestionnaire"]} />}>
-                  <Route path="/stock" element={<ComingSoonPage title="Stock" />} />
+                  <Route path="/stock" element={<StockPage />} />
                 </Route>
                 <Route element={<RequireAuth roles={["admin"]} />}>
                   <Route path="/invitations" element={<ComingSoonPage title="Invitations" />} />

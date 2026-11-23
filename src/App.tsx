@@ -2,15 +2,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ApiError } from "@/lib/errors";
 import { AuthProvider } from "@/auth/AuthContext";
+import InvitationPage from "@/auth/InvitationPage";
 import LoginPage from "@/auth/LoginPage";
 import RegisterPage from "@/auth/RegisterPage";
 import { RequireAuth } from "@/auth/RequireAuth";
 import VerifyEmailPage from "@/auth/VerifyEmailPage";
 import AppLayout from "@/layout/AppLayout";
-import ComingSoonPage from "@/pages/ComingSoonPage";
 import ForbiddenPage from "@/pages/ForbiddenPage";
 import DrinksPage from "@/pages/drinks/DrinksPage";
 import HomePage from "@/pages/HomePage";
+import InvitationsPage from "@/pages/invitations/InvitationsPage";
 import ProfilePage from "@/pages/profile/ProfilePage";
 import StockPage from "@/pages/stock/StockPage";
 import NotFoundPage from "@/pages/NotFoundPage";
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/verify-email" element={<VerifyEmailPage />} />
+            <Route path="/invitation/:token" element={<InvitationPage />} />
             <Route element={<RequireAuth />}>
               <Route element={<AppLayout />}>
                 <Route path="/" element={<HomePage />} />
@@ -43,7 +45,7 @@ export default function App() {
                   <Route path="/stock" element={<StockPage />} />
                 </Route>
                 <Route element={<RequireAuth roles={["admin"]} />}>
-                  <Route path="/invitations" element={<ComingSoonPage title="Invitations" />} />
+                  <Route path="/invitations" element={<InvitationsPage />} />
                 </Route>
                 <Route path="/profil" element={<ProfilePage />} />
                 <Route path="/forbidden" element={<ForbiddenPage />} />

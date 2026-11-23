@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import path from "node:path";
+import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
@@ -27,6 +27,6 @@ export default defineConfig({
       workbox: { navigateFallbackDenylist: [/^\/api/] },
     }),
   ],
-  resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+  resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   test: { environment: "jsdom", globals: true, setupFiles: ["./src/test/setup.ts"] },
 });
